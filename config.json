@@ -1,0 +1,16 @@
+{
+  "params": {
+    "local_server":"True",
+    "local_uri": "mysql://root:@localhost/codingthunder",
+    "prod_uri": "mysql://root:@localhost/codingthunder",
+    "blog_name" : "Coding Thunder",
+    "gmail-user":"vinayaksingoriya@gmail.com",
+    "gmail-pass":"vinayak@123gmail",
+    "no_of_posts_home" : 2,
+    "no_of_posts_dashboard" : 2,
+    "username" : "vinayak",
+    "userpass" : "singoriya123",
+    "upload_location" : "C:\\Users\\lenovo\\PycharmProjects\\flask_Learning\\static"
+
+  }
+}

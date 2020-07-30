@@ -92,23 +92,29 @@ def dashboard():
     if ('user' in session and session['user'] == params["username"]):
         posts = Posts.query.filter_by().all()           
         last = math.ceil(len(posts) / int(params['no_of_posts_dashboard']))
-        num = request.args.get('page')
-        if (not str(num).isnumeric()):
-            num = 1
-        num = int(num)
-        posts = posts[(num - 1) * int(params['no_of_posts_dashboard']): (num - 1) * int(params['no_of_posts_dashboard']) + int(params['no_of_posts_dashboard'])]
+        page = request.args.get('page')
+        if (not str(page).isnumeric()):
+            page = 1
+        page = int(page)
+        posts = posts[(page - 1) * int(params['no_of_posts_dashboard']): (page - 1) * int(params['no_of_posts_dashboard']) + int(params['no_of_posts_dashboard'])]
         
-        if (num == 1):
-            prev = "/dashboard"
-            next = "/dashboard?num=" + str(num + 1)
-        elif (num == last):
-            prev = "/dashboard?num=" + str(num - 1)
-            next = "/dashboard"
+        if (page == 1):
+            show_prev="invisible"
+            show_next=""
+            prev = "/dashboard?page=" + str(page)
+            next = "/dashboard?page=" + str(page + 1)
+        elif (page == last):
+            prev = "/dashboard?page=" + str(page - 1)
+            next = "/dashboard?page=" + str(page)
+            show_prev=""
+            show_next="invisible"
         else:
-            prev = "/dashboard?num=" + str(num - 1)
-            next = "/dashboard?num=" + str(num + 1)
+            prev = "/dashboard?page=" + str(page - 1)
+            next = "/dashboard?page=" + str(page + 1)
+            show_prev=""
+            show_next=""
 
-        return render_template("dashboard.html", params=params, posts=posts, prev=prev, next=next)
+        return render_template("dashboard.html", params=params, posts=posts, prev=prev, next=next, show_prev= show_prev, show_next = show_next  )
     try:
         if request.method == 'POST':
             uname = request.form.get('uname')
@@ -124,14 +130,14 @@ def dashboard():
                 posts = posts[(num - 1) * int(params['no_of_posts_dashboard']): (num - 1) * int(params['no_of_posts_dashboard']) + int(params['no_of_posts_dashboard'])]
                 
                 if (num == 1):
-                    prev = "/dashboard"
-                    next = "/dashboard?num=" + str(num + 1)
+                    prev = "#"
+                    next = "/dashboard?num=" + str(page + 1)
                 elif (num == last):
-                    prev = "/dashboard?num=" + str(num - 1)
-                    next = "/dashboard"
+                    prev = "/dashboard?num=" + str(page - 1)
+                    next = "#"
                 else:
-                    prev = "/dashboard?num=" + str(num - 1)
-                    next = "/dashboard?num=" + str(num + 1)
+                    prev = "/dashboard?num=" + str(page - 1)
+                    next = "/dashboard?num=" + str(page + 1)
 
                 return render_template("dashboard.html", params=params, posts=posts, prev=prev, next=next)
     except:

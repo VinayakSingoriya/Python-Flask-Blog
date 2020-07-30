@@ -3,14 +3,14 @@
     "local_server":"True",
     "local_uri": "mysql://root:@localhost/codingthunder",
     "prod_uri": "mysql://root:@localhost/codingthunder",
-    "blog_name" : "Coding Thunder",
-    "gmail-user":"vinayaksingoriya@gmail.com",
-    "gmail-pass":"vinayak@123gmail",
+    "blog_name" : "Coding Dynamo",
+    "gmail-user":"yourgmailID@gmail.com",
+    "gmail-pass":"gmail_Id_pass",
     "no_of_posts_home" : 2,
-    "no_of_posts_dashboard" : 2,
-    "username" : "vinayak",
-    "userpass" : "singoriya123",
-    "upload_location" : "C:\\Users\\lenovo\\PycharmProjects\\flask_Learning\\static"
+    "no_of_posts_dashboard" : 3,
+    "username" : "User_Name",
+    "userpass" : "User_Pass",
+    "upload_location" : "C:\\Users\\lenovo\\Desktop\\Web\\Py_Projects\\flask_Learning\\static\\img"
 
   }
 }
